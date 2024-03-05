@@ -1,0 +1,4 @@
+Gtest is based on xUnit architecture
+Protable & reusable code that works on windows, linux, mac
+Unit tests written in C++ and for C++ programs.
+
