@@ -1,0 +1,1 @@
+g++ -o clientCode p6_clientCode.cpp vehicleLibrary.a

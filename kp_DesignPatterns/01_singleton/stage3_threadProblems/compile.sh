@@ -1,0 +1,1 @@
+g++ -o singleton_threadProblems *.cpp

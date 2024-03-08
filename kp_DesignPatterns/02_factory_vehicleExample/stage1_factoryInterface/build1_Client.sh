@@ -1,0 +1,1 @@
+g++ -o exe_clientCode p6_clientCode.cpp lib_vehicleLibrary.a
