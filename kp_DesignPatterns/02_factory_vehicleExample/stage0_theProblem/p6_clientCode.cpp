@@ -18,10 +18,3 @@ int main(){
 
     return 0;
 }
-
-/*
-Problems in this design:
-
-1. Violation of OCP: To add a new vehicle, we need to change in the client code, both in include clause and in object creation logic
-2. Tight Coupling: Client code is very tightly coupled with the library. Every time client has to change the library and modify own code to get the changes reflected.
-*/

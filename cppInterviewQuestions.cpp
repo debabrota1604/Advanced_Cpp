@@ -108,7 +108,8 @@ You cannot use an abstract class as a parameter type, a function return type, or
 An abstract class is used if you want to provide a common, implemented functionality among all the implementations of the component. Abstract classes will allow you to partially implement your class, whereas interfaces would have no implementation for any members whatsoever. In simple words, Abstract Classes are a good fit if you want to provide implementation details to your children but don’t want to allow an instance of your class to be directly instantiated.
 
 
-
+Difference between memmove() and memcpy()?
+memmove does not work on overlapped memory addresses. memmove is faster.
 
 
 
@@ -124,7 +125,10 @@ What is a mutable storage class specifier? How can they be used?
 Just like its name, the mutable storage class specifier is used only on a class data member to make it modifiable even though the member is part of an object declared as const. Static or const, or reference members cannot use the mutable specifier. When we declare a function as const, this pointer passed to the function becomes const.
 
 
-
+int sum(int a, int b) const { return a + b; }
+What const means here?
+    The const qualifier after the parameter list indicates that this function is a const member function.
+    Const member functions can be called on const objects of a class and are not allowed to modify the state of the object they belong to.
 
 
 Define namespace in C++.

@@ -32,13 +32,15 @@ int main(){
 
     cout << "\n\n";
     cout << "Creating and deleting object without virtual destructor" << endl;
-    Derived1 *d1 = new Derived1();
-    delete d1;
+    Derived1 d1;
+    Base1* ptr1 = &d1;
+    delete ptr1;
     cout << "\n\n";
 
     cout << "Creating and deleting object with virtual destructor" << endl;
-    Derived2 *d2 = new Derived2();
-    delete d2;
+    Derived2 d2;
+    Base2* ptr2 = &d2;
+    delete ptr2;
     cout << "\n\n";
 
     return 0;

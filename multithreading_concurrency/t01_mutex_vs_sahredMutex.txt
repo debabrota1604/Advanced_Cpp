@@ -1,0 +1,13 @@
+Difference between std::mutex and std::shared_mutex in C++:
+    std::mutex:
+        Exclusive Access: A std::mutex guarantees exclusive access to a critical resource. Only one thread can own the mutex at a time.
+        Binary Lock: It behaves like a binary lock—it’s either locked or not.
+    Use Case: Typically used when you want to ensure that only one thread can access a resource at any given moment (e.g., updating a shared data structure).
+
+    std::shared_mutex:
+        Shared and Exclusive Levels: The std::shared_mutex extends this feature by providing two levels of access:
+        Shared Access: Several threads can share ownership of the same mutex. Multiple readers can access shared data simultaneously without causing data races.
+        Exclusive Access: Only one thread can own the mutex exclusively (similar to std::mutex). When a write operation is requested, it transitions from shared mode to exclusive mode.
+    Use Case: Commonly used when you have multiple readers accessing shared data concurrently, but only one writer can modify it at any given time. For example, implementing a Read-Write Lock.
+
+In summary, while a std::mutex ensures exclusive access, a std::shared_mutex provides both shared and exclusive access levels, making it suitable for scenarios where multiple readers need access without compromising data integrity during writes

@@ -1,0 +1,10 @@
+Read the blog here: 
+    https://ryonaldteofilo.medium.com/atomics-in-c-what-is-a-std-atomic-and-what-can-be-made-atomic-part-1-a8923de1384d
+
+part 2: Atomics in C++ — CAS and Memory Order
+    https://ryonaldteofilo.medium.com/atomics-in-c-compare-and-swap-and-memory-order-part-2-64e127847e00
+
+Youtube link for atomic:
+    https://www.youtube.com/watch?v=A8eCGOqgvH4
+
+    

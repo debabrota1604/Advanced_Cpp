@@ -134,20 +134,3 @@ using OperationFunction = void (*)();
 void executeOperation(OperationFunction operation) {
     operation();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

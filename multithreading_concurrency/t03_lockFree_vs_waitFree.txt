@@ -1,0 +1,86 @@
+Let’s delve into the fascinating world of thread synchronization mechanisms: lock-free and wait-free.
+
+Lock-Free Concurrency:
+    In lock-free systems, while any particular computation may be blocked for some period of time, all CPUs are able to continue performing other computations.
+    
+    The key idea is that no thread is permanently blocked by another thread. Even if one thread is waiting, other threads can still make progress.
+    
+    Lock-free algorithms ensure that threads can continue executing independently without waiting indefinitely for locks or other synchronization primitives.
+    
+    An example of a lock-free algorithm is the atomic & compare-and-swap (CAS) operation, which allows atomic updates to shared variables without explicit locks.
+    
+    Lock-free algorithms are generally more scalable than traditional locking mechanisms because they minimize contention and allow parallel execution.
+
+    Example:
+
+    #include <iostream>
+    #include <atomic>
+
+    int main() {
+        std::atomic<int> counter{0};
+
+        // Increment counter atomically
+        counter.fetch_add(1, std::memory_order_relaxed);
+
+        std::cout << "Counter value: " << counter.load() << std::endl;
+        return 0;
+    }
+    
+    Lock-free algorithms are essential for high-performance data structures and parallel programming.
+
+Wait-Free Concurrency:
+    Wait-free algorithms take the concept of non-blocking concurrency to the next level.
+    
+    A non-blocking algorithm is considered wait-free if it guarantees both system-wide progress and per-thread progress.
+
+    A wait-free algorithm guarantees that every thread completes its operation in a bounded number of steps.
+    
+    System-wide progress means that even if one thread is suspended or fails, other threads can still make progress.
+    
+    Per-thread progress ensures that each thread eventually completes its operation, regardless of other threads’ behavior.
+    
+    Achieving wait-freedom is challenging and often requires intricate designs.
+    
+    An example of a wait-free algorithm is the Michael-Scott queue, which guarantees that every enqueue and dequeue operation completes in a bounded number of steps.
+
+    Example:
+    #include <iostream>
+    #include <atomic>
+
+    class WaitFreeCounter {
+    private:
+        std::atomic<int> counter{0};
+
+    public:
+        void increment() {
+            int expected = counter.load();
+            while (!counter.compare_exchange_weak(expected, expected + 1)) {//weak means flexible 
+                // Retry until successful
+            }
+        }
+
+        int get() const {
+            return counter.load();
+        }
+    };
+
+    int main() {
+        WaitFreeCounter counter;
+        counter.increment();
+        std::cout << "Counter value: " << counter.get() << std::endl;
+        return 0;
+    }
+
+
+Locks and Synchronization:
+    Locks are a common synchronization technique used to protect shared mutable data.
+    
+    A lock allows at most one thread to own it at a time. When a thread acquires a lock, it signals to other threads, “I’m modifying this data; don’t touch it right now.”
+    
+    Locks have two primary operations:
+        Acquire: Allows a thread to take ownership of a lock. If another thread already owns the lock, the acquiring thread blocks until the lock is released.
+        Release: Relinquishes ownership of the lock, allowing another thread to acquire it.
+    
+    Locks also ensure that shared memory is accessed correctly, avoiding issues like reordering.
+    
+    Synchronized regions (guarded by locks) provide mutual exclusion: only one thread can be inside the synchronized region at a time.
