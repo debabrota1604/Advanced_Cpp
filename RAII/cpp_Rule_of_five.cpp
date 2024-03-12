@@ -105,6 +105,7 @@ Student& operator=(const Student& rhs) {
 
     this->id = rhs.id;
 
+    // first allocate then delete, as allocation can cause exception where the deleted data cannot be restored
     char *tmp = new char[strlen(rhs.name) + 1];
     strcpy(tmp, rhs.name);
 
@@ -210,7 +211,7 @@ int main () {
 }
 
 /*
-In the fucntion foo(), the Student object s1 is local to foo. So the object is about to be destroyed when the function returns. But before returning, the function is returning the object by value (or by copy).
+In the function foo(), the Student object s1 is local to foo. So the object is about to be destroyed when the function returns. But before returning, the function is returning the object by value (or by copy).
 
 Here, in absence of move semantics, the copy constructor would have been automatically called which would have created a deep copy of the object. But, as we have move operations in the Student class, the compiler will make use of those to make the code efficient. Instead of calling the copy constructor, the move constructor will be called and the object someStu steals data from the dying object s1.
 */
