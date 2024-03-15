@@ -1,5 +1,4 @@
 #include <iostream>
-
 using namespace std;
 
 class NetworkDevice {
@@ -14,17 +13,13 @@ public:
     Router(string name, string ip, string securityPolicy)
         : name(move(name)), ip(move(ip)), securityPolicy(move(securityPolicy)) {}
 
-    NetworkDevice* clone() const override {
-        return new Router(*this);
-    }
+    NetworkDevice* clone() const override { return new Router(*this); }
 
     void display() const override {
         cout << "Router - Name: " << name << ", IP: " << ip << ", Security Policy: " << securityPolicy << endl;
     }
 
-    void update(string newName) override {
-        name = move(newName);
-    }
+    void update(string newName) override { name = move(newName); }
 
 private:
     string name;
@@ -37,17 +32,13 @@ public:
     Switch(string name, string protocol)
         : name(move(name)), protocol(move(protocol)) {}
 
-    NetworkDevice* clone() const override {
-        return new Switch(*this);
-    }
+    NetworkDevice* clone() const override { return new Switch(*this); }
 
     void display() const override {
         cout << "Switch - Name: " << name << ", Protocol: " << protocol << endl;
     }
 
-    void update(string newName) override {
-        name = move(newName);
-    }
+    void update(string newName) override { name = move(newName); }
 
 private:
     string name;
