@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <vector>
 using namespace std;
 
 // Command Interface
@@ -12,39 +12,26 @@ public:
 // Receiver - performing the operation
 class Document {
 public:
-    void open() {
-        cout << "Document Opened" << endl;
-    }
-
-    void save() {
-        cout << "Document Saved" << endl;
-    }
+    void open() { cout << "Document Opened" << endl; }
+    void save() { cout << "Document Saved" << endl; }
 };
 
 // Concrete Command
 class ActionOpen : public ActionListenerCommand {
 private:
     Document* doc;
-
 public:
     ActionOpen(Document* document) : doc(document) {}
-
-    void execute() {
-        doc->open();
-    }
+    void execute() { doc->open(); }
 };
 
 // Concrete Command
 class ActionSave : public ActionListenerCommand {
 private:
     Document* doc;
-
 public:
     ActionSave(Document* document) : doc(document) {}
-
-    void execute() {
-        doc->save();
-    }
+    void execute() { doc->save(); }
 };
 
 // Invoker
@@ -53,9 +40,7 @@ private:
     vector<ActionListenerCommand*> commands;
 
 public:
-    void addCommand(ActionListenerCommand* command) {
-        commands.push_back(command);
-    }
+    void addCommand(ActionListenerCommand* command) { commands.push_back(command); }
 
     void executeCommands() {
         for (ActionListenerCommand* command : commands) {

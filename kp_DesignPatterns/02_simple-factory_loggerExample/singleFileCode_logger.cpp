@@ -1,5 +1,4 @@
-#include <iostream>
-
+#include <bits/stdc++.h>
 using namespace std;
 
 enum class LogLevel {
@@ -8,6 +7,7 @@ enum class LogLevel {
     ERROR
 };
 
+// Logger Interface to be extended by all logger classes
 class ILogger {
     public:
         virtual void log(const string& msg) = 0; //virtual function to be implemented by all custom loggers
@@ -16,31 +16,18 @@ class ILogger {
 
 class DebugLogger : public ILogger {
     public:
-        void log(const string& msg);
+        void log(const string& msg){cout << "DEBUG : " << msg << endl;}
 };
-
-void DebugLogger::log(const string &msg)
-{
-    cout << "DEBUG : " << msg << endl;
-}
 
 class ErrorLogger : public ILogger{
     public:
-        void log(const string& msg);
+        void log(const string& msg){cout<<"ERROR : "<<msg<<endl;}
 };
-
-void ErrorLogger::log(const string& msg) {
-    cout<<"ERROR : "<<msg<<endl;
-}
 
 class InfoLogger : public ILogger {
     public:
-        void log(const string& msg);
+        void log(const string& msg){cout<<"INFO : "<<msg<<endl;}
 };
-
-void InfoLogger::log(const string& msg) {
-    cout<<"INFO : "<<msg<<endl;
-}
 
 
 class LoggerFactory {

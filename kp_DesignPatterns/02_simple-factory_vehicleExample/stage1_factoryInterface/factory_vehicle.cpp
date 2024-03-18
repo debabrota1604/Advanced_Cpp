@@ -8,37 +8,29 @@ class Vehicle{
     virtual void createVehicle() =0;
 };
 
-
 class Car: public Vehicle{
     public:
-    void createVehicle();
+    void createVehicle(){cout << "Creating Car" << endl;}
 };
-void Car::createVehicle(){
-    cout << "Creating Car" << endl;
-}
-
 
 class Bike: public Vehicle{
     public:
-    void createVehicle();
+    void createVehicle(){cout << "Creating Bike\n";}
 };
-void Bike::createVehicle(){
-    cout << "Creating Bike\n";
-}
 
 
 class VehicleFactory{
     public:
-    static Vehicle* getVehicle(string vehicleType); //Can also be written without static: Then getVehicle will be called after creating an object
-};
-Vehicle* VehicleFactory::getVehicle(string vType){
-    Vehicle* vehicle;
-    // based on object request, create the object
-    if(vType == "car") vehicle = new Car();
-    else if(vType == "bike") vehicle = new Bike();
+    static Vehicle* getVehicle(string vehicleType){
+         //Can also be written without static: Then getVehicle will be called after creating an object
+        Vehicle* vehicle;
+        // based on object request, create the object
+        if(vehicleType == "car") vehicle = new Car();
+        else if(vehicleType == "bike") vehicle = new Bike();
 
-    return vehicle;
-}
+        return vehicle;
+    }
+};
 
 
 int main(){

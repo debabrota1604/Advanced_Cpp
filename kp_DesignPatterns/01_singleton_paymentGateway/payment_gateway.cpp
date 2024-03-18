@@ -1,28 +1,21 @@
-#include <iostream>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-class PaymentGatewayManager
-{
+class PaymentGatewayManager{
 
 private:
-    PaymentGatewayManager()
-    {
+    PaymentGatewayManager(){
         cout << "Payment Gateway Manager initialized." << endl;
     }
 
     static PaymentGatewayManager *instance;
-
     static mutex mtx;
 
 public:
-    static PaymentGatewayManager *getInstance()
-    {
-        if (instance == nullptr)
-        {
+    static PaymentGatewayManager *getInstance(){
+        if (instance == nullptr){
             mtx.lock();
-            if (instance == nullptr)
-            {
+            if (instance == nullptr){
                 instance = new PaymentGatewayManager();
             }
             mtx.unlock();
@@ -30,8 +23,7 @@ public:
         return instance;
     }
 
-    void processPayment(double amount)
-    {
+    void processPayment(double amount){
         cout << "Processing payment of $" << amount << " through the payment gateway." << endl;
     }
 };

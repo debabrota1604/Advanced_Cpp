@@ -1,23 +1,18 @@
 #include <iostream>
-
+#include <vector>
 using namespace std;
+// We want to call a common function from all objects.
+
 
 // Product class representing individual products
 class Product {
     private:
         string name;
         double price;
-
     public:
         Product(const string& name, const double& price) : name(name), price(price) {}
-
-        const string& getName() const {
-            return name;
-        }
-
-        double getPrice() const {
-            return price;
-        }
+        const string& getName() const { return name; }
+        double getPrice() const { return price; }
 };
 
 // Iterator interface
@@ -32,14 +27,11 @@ class Iterator {
 // Concrete iterator for the product collection
 class ProductIterator : public Iterator {
     private:
-
         vector<Product*>& products;
         size_t current;
 
     public:
-
         ProductIterator(vector<Product*>& products) : products(products), current(0) {}
-
         Product* first() {
             if (products.empty()) {
                 return nullptr;
@@ -55,9 +47,7 @@ class ProductIterator : public Iterator {
             return nullptr;
         }
 
-        bool hasNext() {
-            return current < products.size();
-        }
+        bool hasNext() { return current < products.size(); }
 };
 
 // Aggregate class that stores products and provides an iterator

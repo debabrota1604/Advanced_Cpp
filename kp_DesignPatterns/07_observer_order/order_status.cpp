@@ -1,61 +1,50 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 class Order;
 
 // Observer interface
-class Observer
-{
+class Observer{
 public:
     virtual void update(Order *order) = 0;
 };
 
 // Concrete Observer: Customer
-class Customer : public Observer
-{
+class Customer : public Observer{
 private:
     string name;
-
 public:
     Customer(string name) : name(name) {}
-
     void update(Order *order);
 };
 
 // Concrete Observer: Restaurant
-class Restaurant : public Observer
-{
+class Restaurant : public Observer{
 private:
     string restaurantName;
-
 public:
     Restaurant(string name) : restaurantName(name) {}
-
     void update(Order *order);
 };
 
 // Concrete Observer: DeliveryDriver
-class DeliveryDriver : public Observer
-{
+class DeliveryDriver : public Observer{
 private:
     string driverName;
-
 public:
     DeliveryDriver(string name) : driverName(name) {}
-
     void update(Order *order);
 };
 
 // Concrete Observer: CallCenter
-class CallCenter : public Observer
-{
+class CallCenter : public Observer{
 public:
     void update(Order *order);
 };
 
 // Subject: Order
-class Order
-{
+class Order{
 private:
     int id;
     string status;
@@ -63,65 +52,41 @@ private:
 
 public:
     Order(int id) : id(id), status("Order Placed") {}
+    int getId(){ return id;}
 
-    int getId()
-    {
-        return id;
-    }
-
-    string getStatus()
-    {
-        return status;
-    }
-
-    void setStatus(string newStatus)
-    {
+    string getStatus(){ return status;}
+    void setStatus(string newStatus){
         status = newStatus;
         notifyObservers();
     }
 
-    void attach(Observer *observer)
-    {
-        observers.push_back(observer);
-    }
-
-    void detach(Observer *observer)
-    {
-        for (auto it = observers.begin(); it != observers.end(); ++it)
-        {
-            if (*it == observer)
-            {
+    void attach(Observer *observer){ observers.push_back(observer); }
+    void detach(Observer *observer){
+        for (auto it = observers.begin(); it != observers.end(); ++it){
+            if (*it == observer){
                 observers.erase(it);
                 break; // Assuming each observer can be attached only once
             }
         }
     }
 
-    void notifyObservers()
-    {
-        for (Observer *observer : observers)
-        {
-            observer->update(this);
-        }
+    void notifyObservers(){
+        for (Observer *observer : observers) observer->update(this);
     }
 };
 
-void Customer::update(Order *order)
-{
+void Customer::update(Order *order){
     cout << "Hello, " << name << "! Order #" << order->getId() << " is now " << order->getStatus() << endl;
 }
 
-void Restaurant::update(Order *order)
-{
+void Restaurant::update(Order *order){
     cout << "Restaurant " << restaurantName << ": Order #" << order->getId() << " is now " << order->getStatus() << endl;
 }
 
-void DeliveryDriver::update(Order *order)
-{
+void DeliveryDriver::update(Order *order){
     cout << "Driver " << driverName << ": Order #" << order->getId() << " is now " << order->getStatus() << endl;
 }
-void CallCenter::update(Order *order)
-{
+void CallCenter::update(Order *order){
     cout << "Call center: Order #" << order->getId() << " is now " << order->getStatus() << endl;
 }
 

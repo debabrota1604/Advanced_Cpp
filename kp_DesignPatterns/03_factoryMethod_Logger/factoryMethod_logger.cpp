@@ -1,12 +1,7 @@
 #include <iostream>
-
 using namespace std;
 
-enum class LogLevel {
-    DEBUG,
-    INFO,
-    ERROR
-};
+enum class LogLevel { DEBUG, INFO, ERROR };
 
 class ILogger {
     public:
@@ -14,27 +9,20 @@ class ILogger {
         virtual ~ILogger() {}
 };
 
-
-
 class DebugLogger : public ILogger {
     public:
         void log(const string& msg){ cout<<"DEBUG : "<<msg<<endl; }
 };
-
-
 
 class ErrorLogger : public ILogger{
     public:
         void log(const string& msg){ cout<<"ERROR : "<<msg<<endl; }
 };
 
-
-
 class InfoLogger : public ILogger {
     public:
         void log(const string& msg){ cout<<"INFO : "<<msg<<endl; }
 };
-
 
 /*
 From Simple factory's logger_factory.cpp:

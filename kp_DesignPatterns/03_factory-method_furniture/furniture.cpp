@@ -12,23 +12,17 @@ public:
 // Concrete Products: Sofa, Chair, Table
 class Sofa : public FurnitureItem {
 public:
-    void display() override {
-        std::cout << "Sofa" << std::endl;
-    }
+    void display() override { std::cout << "Sofa" << std::endl; }
 };
 
 class Chair : public FurnitureItem {
 public:
-    void display() override {
-        std::cout << "Chair" << std::endl;
-    }
+    void display() override { std::cout << "Chair" << std::endl; }
 };
 
 class Table : public FurnitureItem {
 public:
-    void display() override {
-        std::cout << "Table" << std::endl;
-    }
+    void display() override { std::cout << "Table" << std::endl; }
 };
 
 // Abstract Creator: Furniture Factory
@@ -40,23 +34,17 @@ public:
 // Concrete Creators: Sofa Factory, Chair Factory, Table Factory
 class SofaFactory : public FurnitureFactory {
 public:
-    FurnitureItem* createFurniture() override {
-        return new Sofa();
-    }
+    FurnitureItem* createFurniture() override { return new Sofa(); }
 };
 
 class ChairFactory : public FurnitureFactory {
 public:
-    FurnitureItem* createFurniture() override {
-        return new Chair();
-    }
+    FurnitureItem* createFurniture() override { return new Chair(); }
 };
 
 class TableFactory : public FurnitureFactory {
 public:
-    FurnitureItem* createFurniture() override {
-        return new Table();
-    }
+    FurnitureItem* createFurniture() override { return new Table(); }
 };
 
 int main() {
