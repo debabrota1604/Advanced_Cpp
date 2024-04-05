@@ -74,8 +74,7 @@ class ComplexCommand : public Command {
 };
 
 /**
- * The Invoker is associated with one or several commands. It sends a request to
- * the command.
+ * The Invoker is associated with one or several commands. It sends a request to the command.
  */
 class Invoker {
   /**

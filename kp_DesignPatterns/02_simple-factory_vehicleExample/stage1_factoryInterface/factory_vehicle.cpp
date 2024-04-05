@@ -23,6 +23,7 @@ class VehicleFactory{
     public:
     static Vehicle* getVehicle(string vehicleType){
          //Can also be written without static: Then getVehicle will be called after creating an object
+         
         Vehicle* vehicle;
         // based on object request, create the object
         if(vehicleType == "car") vehicle = new Car();

@@ -50,26 +50,26 @@ public:
 int main() {
     // Create factories for different types of furniture
     FurnitureFactory* sofaFactory = new SofaFactory();
-    FurnitureFactory* chairFactory = new ChairFactory();
-    FurnitureFactory* tableFactory = new TableFactory();
+    // FurnitureFactory* chairFactory = new ChairFactory();
+    // FurnitureFactory* tableFactory = new TableFactory();
 
     // Create furniture objects using the factory methods
     FurnitureItem* sofa = sofaFactory->createFurniture();
-    FurnitureItem* chair = chairFactory->createFurniture();
-    FurnitureItem* table = tableFactory->createFurniture();
+    // FurnitureItem* chair = chairFactory->createFurniture();
+    // FurnitureItem* table = tableFactory->createFurniture();
 
     // Display the created furniture items
     sofa->display();
-    chair->display();
-    table->display();
+    // chair->display();
+    // table->display();
 
     // Clean up objects
     delete sofaFactory;
-    delete chairFactory;
-    delete tableFactory;
+    // delete chairFactory;
+    // delete tableFactory;
     delete sofa;
-    delete chair;
-    delete table;
+    // delete chair;
+    // delete table;
 
     return 0;
 }
